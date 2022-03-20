@@ -4,23 +4,36 @@ const path = require("path");
 const port = process.env.PORT || 8000;
 require("dotenv").config();
 const nodeMail = require("nodemailer");
-// const handlebars = require("express-handlebars");
-// const hbs = require("hbs")
-const {engine} = require('express-handlebars');
-// app.engine('.hbs', exphbs.engine({ extname: '.hbs', defaultLayout: "main"}));
-app.engine('handlebars', engine({ extname: '.hbs', defaultLayout: "false"}));
-app.set("view engine","hbs")
-const staticPath =path.join(__dirname,'/public')
+const handlebars = require("express-handlebars");
+const hbs = require("hbs")
+const { engine } = require('express-handlebars');
+
+const staticPath =path.join(__dirname,'./public')
 const templatePath =path.join(__dirname,'./views/pages')
 const partialPath=path.join(__dirname,'./views/partials')
 
 app.use(express.static(staticPath));
+app.engine('handlebars', engine({ extname: '.hbs', defaultLayout: "main"}));
+app.set("view engine","hbs")
 // app.engine('handlebars', hbs({defaultLayout: 'main'}));
+// app.engine('hbs', hbs.engine({
+//   extname: 'hbs',
+//   defaultLayout: 'layout',
+//   layoutsDir: __dirname + '/views/layout/',
+//   partialsDir: __dirname + '/views/partials'
+// }))
 app.set("views", templatePath)
 hbs.registerPartials(partialPath);
 
+// const layoutPath = path.join(__dirname, './views/layouts/main'); 
+// app.engine('handlebars', hbs({ layoutsDir: layoutPath }));
+
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
+
+
+
 
 async function mainMail(name, email, message) {
   const transporter = await nodeMail.createTransport({
@@ -56,7 +69,6 @@ app.post("/contact", async (req, res, next) => {
   }
 });
 
-
 app.get("/",(req,res)=>{
   res.render('home',{
       title:"home",
@@ -72,16 +84,6 @@ app.get("/about",(req,res)=>{
       title:"about",
   })
 })
-// app.get("/portfolio",(req,res)=>{
-//   res.render('portfolio',{
-//       title:"portfolio",
-//   })
-// })
-// app.get("/team",(req,res)=>{
-//   res.render('team',{
-//       title:"team",
-//   })
-// })
 app.get("/pricing",(req,res)=>{
   res.render('pricing',{
       title:"pricing",
