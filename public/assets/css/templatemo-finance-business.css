@@ -295,6 +295,8 @@ header .navbar {
 	font-weight: 300;
 	letter-spacing: 0.5px;
 	color: #fff;
+	border-bottom: 3px solid transparent;
+	margin-top: 5px;
 	transition: all 0.5s;
 	margin-top: 5px;
 }
@@ -568,6 +570,32 @@ ul.slick-dots {
 	margin-bottom: 20px;
 }
 
+.more-services-btn{
+	margin-top:100px;
+}
+
+.arrow-button{
+	background-color: #a4c639;
+	color: #fff;
+	border: none;
+	font-size: 13px;
+	text-transform: uppercase;
+	padding: 12px 30px;
+	border: 1px solid #a4c639;
+	border-radius: none;
+	display: inline-block;
+	transition: all 0.3s;
+	outline: none;
+	box-shadow: none;
+	text-shadow: none;
+	cursor: pointer;
+}
+
+.arrow-button:hover {
+	background-color: #fff;
+	color: #a4c639;
+	border: 1px solid #a4c639;
+}
 
 
 /* Fun Facts */

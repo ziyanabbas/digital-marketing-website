@@ -4,7 +4,10 @@ jQuery( document ).ready(function( $ ) {
 	"use strict";
 
 
-    
+    // $('ul li a').click(function(){
+    //     $('ul li').removeClass('active');
+    //     $(this).parent().addClass('active');
+    // });
         $(function() {
             $( "#tabs" ).tabs();
         });
