@@ -84,6 +84,11 @@ app.get("/about",(req,res)=>{
       title:"about",
   })
 })
+app.get("/portfolio",(req,res)=>{
+  res.render('portfolio',{
+      title:"portfolio",
+  })
+})
 app.get("/pricing",(req,res)=>{
   res.render('pricing',{
       title:"pricing",
